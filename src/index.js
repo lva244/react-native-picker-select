@@ -137,6 +137,14 @@ export default class RNPickerSelect extends PureComponent {
         this.togglePicker = this.togglePicker.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (JSON.stringify(nextProps.items) !== JSON.stringify(this.props.items)) {
+            this.setState({
+                items: nextProps.items
+            })
+        }
+    }
+
     onUpArrow() {
         this.togglePicker();
         setTimeout(() => {
